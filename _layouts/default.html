@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>{{ page.title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+
+    <script type="application/javascript" src="/assets/app.js"></script>
+    <script>
+
+        // Image Library
+        {% assign image_files = site.static_files | where: "image", true %}
+        {% for myimage in image_files %}
+            registerImage('{{ myimage.path }}');
+        {% endfor %}
+
+    </script>
+</head>
+<body>
+
+
+<div id="page">
+
+    <nav class="sidebar">
+        <h1>Untitled Project</h1>
+        <ul>
+            <li class="selected"><a href="#all">All</a></li>
+            <script>
+                renderFolderList();
+            </script>
+        </ul>
+        <a href="https://relay.graphics" class="powered-by">
+            Powered by Relay
+        </a>
+    </nav>
+
+    <section class="main">
+
+        <div class="content">
+            {{ content }}
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>
